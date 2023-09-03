@@ -1,20 +1,29 @@
 import type { Config } from 'tailwindcss'
+import { createThemes } from 'tw-colors'
 
 const config: Config = {
-  content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
-  theme: {
-    extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+  content: ['./src/components/**/*.{ts,tsx}', './src/app/**/*.{ts,tsx}'],
+
+  plugins: [
+    createThemes({
+      default: {
+        default: {
+          brandColors: {
+            primary: '#7766c6',
+            darkPrimary: '#46467A',
+            lightPrimary: '#E0DFFD',
+            secondary: '#FFC212',
+            tertiary: '#F9B0C3',
+          },
+          bgColors: {
+            dark: '#333',
+            light: '#f9f9f9',
+          },
+          white: '#fff',
+          dark: '#000',
+        },
       },
-    },
-  },
-  plugins: [],
+    }),
+  ],
 }
 export default config
