@@ -22,6 +22,9 @@ const config: Config = {
         large: '1rem',
         xLarge: '2rem',
       },
+      borderWidth: {
+        1: '1px',
+      },
     },
   },
 
