@@ -1,24 +1,30 @@
 'use client'
 
+import { merge } from '@/lib/tailwind'
 import React, { useState } from 'react'
 
 interface Props {
   children: React.ReactNode | React.ReactNode[]
   TriggerComponent: JSX.Element
+  className?: string
 }
-export const ToggleLayout = ({ TriggerComponent, children }: Props) => {
-  const [isTrue, setIsTrue] = useState(false)
+export const ToggleLayout = ({
+  TriggerComponent,
+  children,
+  className = '',
+}: Props) => {
+  const [isTrue, setIsTrue] = useState(true)
 
   const handleClick = () => {
-    TriggerComponent?.props?.onClick && TriggerComponent?.props?.onClick()
     setIsTrue((prev) => !prev)
   }
 
   const TriggerElement = React.cloneElement(TriggerComponent, {
     onClick: handleClick,
   })
+
   return (
-    <div className="relative">
+    <div className={merge(['relative', className])}>
       {TriggerElement}
       {isTrue && children}
     </div>
